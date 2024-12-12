@@ -14,6 +14,13 @@ jobs:
       - name: Checkout latest code
         uses: actions/checkout@v4
 
+      - name: Cleanup
+        run: |
+          rm -rf .git
+          rm .gitignore
+          rm -rf .github
+          rm README.md
+
       - name: Generating zip
         uses: rudlinkon/action-wordpress-build-zip@1.3.0
         with:

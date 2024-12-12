@@ -10,8 +10,13 @@ jobs:
     name: Build release zip
     runs-on: ubuntu-latest
     steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+      - name: 🚚 Checkout latest code
+        uses: actions/checkout@v4
 
-    - name: Generate zip
-      uses: 10up/action-wordpress-plugin-build-zip@stable
+      - name: 📦 Build Plugin
+        uses: webshr/deploy-wp-update-server@latest
+        with:
+          install-composer: true # optional; defaults to false
+          npm-run-build: true # optional; defaults to false
+          node-version: 20 # optional; defaults to '18.x'
+          retention-days: 5 # optional; defaults to 30

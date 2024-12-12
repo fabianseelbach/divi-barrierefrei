@@ -10,13 +10,13 @@ jobs:
     name: Build release zip
     runs-on: ubuntu-latest
     steps:
-      - name: 🚚 Checkout latest code
+      - name: Checkout latest code
         uses: actions/checkout@v4
 
-      - name: 📦 Build Plugin
-        uses: webshr/action-wp-build-archive@latest
+      - name: Generating zip
+        uses: rudlinkon/action-wordpress-build-zip@1.3.0
         with:
-          install-composer: true # optional; defaults to false
-          npm-run-build: true # optional; defaults to false
-          node-version: 20 # optional; defaults to '18.x'
-          retention-days: 5 # optional; defaults to 30
+          retention-days: 1 # Optional; defaults to 3
+          install-composer: true # Optional; defaults to false
+          npm-run-build: true # Optional; defaults to false
+          node-version: 20 # Optional; defaults to 16

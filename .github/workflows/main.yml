@@ -20,3 +20,16 @@ jobs:
           install-composer: true # Optional; defaults to false
           npm-run-build: true # Optional; defaults to false
           node-version: 20 # Optional; defaults to 16
+
+
+      - name: Zip Folder
+        run: zip -r divi-barrierefrei.zip dist-archive
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        with:
+          name: latest
+          tag_name: latest
+          prerelease: true
+          files: divi-barrierefrei.zip
+          make_latest: true

@@ -1,0 +1,4 @@
+/* CSS – Zeigt linktext fuer screen readers an */
+*:focus{
+    outline: dashed 2px #990000;
+}

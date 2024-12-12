@@ -19,11 +19,11 @@ function get_image_meta( $image, $type = 'alt' ) {
 
     if ( ! $image ) {
 
-        return “;
+        return '';
 
     }
 
-    $output = “;
+    $output = '';
 
     if ( '/' === $image[0] ) {
 
@@ -55,29 +55,29 @@ function get_image_meta( $image, $type = 'alt' ) {
 
 function update_module_alt_text( $attrs, $unprocessed_attrs, $slug ) {
 
-    if ( ( $slug === 'et_pb_image' || $slug === 'et_pb_fullwidth_image' ) && “ === $attrs['alt'] ) {
+    if ( ( $slug === 'et_pb_image' || $slug === 'et_pb_fullwidth_image' ) && '' === $attrs['alt'] ) {
 
         $attrs['alt'] = get_image_meta( $attrs['src'] );
 
         $attrs['title_text'] = get_image_meta( $attrs['src'], 'title' );
 
-    } elseif ( $slug === 'et_pb_blurb' && 'off' === $attrs['use_icon'] && “ === $attrs['alt'] ) {
+    } elseif ( $slug === 'et_pb_blurb' && 'off' === $attrs['use_icon'] && '' === $attrs['alt'] ) {
 
         $attrs['alt'] = get_image_meta( $attrs['image'] );
 
-    } elseif ( $slug === 'et_pb_slide' && “ !== $attrs['image'] && “ === $attrs['image_alt'] ) {
+    } elseif ( $slug === 'et_pb_slide' && '' !== $attrs['image'] && '' === $attrs['image_alt'] ) {
 
         $attrs['image_alt'] = get_image_meta( $attrs['image'] );
 
     } elseif ( $slug === 'et_pb_fullwidth_header' ) {
 
-        if ( “ !== $attrs['logo_image_url'] && “ === $attrs['logo_alt_text'] ) {
+        if ( '' !== $attrs['logo_image_url'] && '' === $attrs['logo_alt_text'] ) {
 
             $attrs['logo_alt_text'] = get_image_meta( $attrs['logo_image_url'] );
 
         }
 
-        if ( “ !== $attrs['header_image_url'] && “ === $attrs['image_alt_text'] ) {
+        if ( '' !== $attrs['header_image_url'] && '' === $attrs['image_alt_text'] ) {
 
             $attrs['image_alt_text'] = get_image_meta( $attrs['header_image_url'] );
 
@@ -89,7 +89,7 @@ function update_module_alt_text( $attrs, $unprocessed_attrs, $slug ) {
 
 }
 
-// PHP Code dass Seiten auf Smartphones zoomfähig sind, //////////////////////////////////////////////////////////////
+// PHP Code dass Seiten auf Smartphones zoomfähig sind, //
 
 function wf_remove_et_viewport_meta() {
 

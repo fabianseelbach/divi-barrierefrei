@@ -1,0 +1,13 @@
+{
+	"name" : "Divi Barrierefreiheit",
+	"slug" : "divi-barrierefreiheit",
+	"author" : "Fabian Seelbach",
+	"version" : "1.0.1",
+	"download_url" : "https://github.com/fabianseelbach/divi-barrierefrei/releases/download/latest/divi-barrierefrei.zip",
+	"requires" : "5.6",
+	"tested" : "6.7.1",
+	"requires_php" : "5.6",
+	"added" : "2024-12-21 11:00:00",
+	"last_updated" : "2024-12-21 11:00:00",
+	"homepage" : "https://github.com/fabianseelbach/divi-barrierefei"
+}

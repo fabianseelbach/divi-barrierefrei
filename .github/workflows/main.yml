@@ -50,7 +50,14 @@ jobs:
           files: divi-barrierefrei.zip
           make_latest: true
 
+      - name: Upload index.json as artifact
+        id: deployment
+        uses: actions/upload-pages-artifact@v3 # or specific "vX.X.X" version tag for this action
+        with:
+          path: index.json
+
   deploy:
+    needs: build
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
       pages: write      # to deploy to Pages
@@ -64,11 +71,6 @@ jobs:
     # Specify runner + deployment step
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout latest code
-        uses: actions/checkout@v4
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4 # or specific "vX.X.X" version tag for this action
-        with:
-          artifact_name: index.json

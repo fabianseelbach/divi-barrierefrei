@@ -35,9 +35,11 @@ jobs:
          zip -r ../divi-barrierefrei.zip .
 
       - name: Remove Release
-        uses: liudonghua123/delete-release-action@v1
+        uses: nikhilbadyal/ghaction-rm-releases@v0.0.5
         with:
-          release_name: 'latest'
+          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
+          RELEASE_PATTERN: 'latest'
+
 
       - name: Release
         uses: softprops/action-gh-release@v2

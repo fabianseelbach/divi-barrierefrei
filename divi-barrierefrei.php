@@ -3,7 +3,7 @@
  * Plugin Name:       Divi Barrierefreiheit
  * Plugin URI:        https://github.com/fabianseelbach/divi-barrierefei
  * Description:       Wordpress Plugin um Divi Barrierefreier zu gestalten
- * Version:           1.0.1
+ * Version:           1.0.2
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Fabian Seelbach
@@ -12,6 +12,8 @@
  * License URI:       https://github.com/fabianseelbach/divi-barrierefei/blob/production/LICENSE
  * Text Domain:       divi-barrierefrei
  */
+
+define("DIVI_BARRIEREFREI_VERSION", "1.0.2");
 
 // ALT-Tags aus der Mediathek auslesen //
 
@@ -92,4 +94,8 @@ add_filter("et_pb_module_shortcode_attributes", "update_module_alt_text", 20, 3 
 add_action("after_setup_theme", "wf_remove_et_viewport_meta");
 add_action("wp_head", "wf_enable_pinch_zoom");
 add_action('wp_enqueue_scripts', 'divi_barrierefrei_script');
+
+require_once("updater.php");
+$update = new Updater();
+$update->create(DIVI_BARRIEREFREI_VERSION);
 ?>

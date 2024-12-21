@@ -3,7 +3,7 @@
  * Plugin Name:       Divi Barrierefreiheit
  * Plugin URI:        https://github.com/fabianseelbach/divi-barrierefei
  * Description:       Wordpress Plugin um Divi Barrierefreier zu gestalten
- * Version:           1.0.0
+ * Version:           1.0.1
  * Requires at least: 5.2
  * Requires PHP:      7.2
  * Author:            Fabian Seelbach
@@ -73,16 +73,23 @@ function wf_enable_pinch_zoom() {
 // JS File
 
 function divi_barrierefrei_script() {
-    wp_register_script('divi-barrierefrei-js', plugins_url('divi-barrierefrei//divi-barrierefrei.js'), array('jquery'), '1.0', true);
+    wp_register_script('divi-barrierefrei-js', plugins_url('divi-barrierefrei/divi-barrierefrei.js'), array('jquery'), '1.0', true);
     wp_enqueue_script('divi-barrierefrei-js');
 
-    wp_register_style("divi-barrierefrei-css", plugins_url( 'divi-barrierefrei/divi-barrierefrei.css' ));
-    wp_enqueue_style('divi-barrierefrei-css');
- }
+    $options = get_option('dvmd_acbd_admin_options', array());
+    if (empty($options['active_plugins'])) {
+        wp_register_script('divi-barrierefrei-addon-js', plugins_url('divi-barrierefrei/divi-barrierefrei-addon.js'), array('jquery'), '1.0', true);
+        wp_enqueue_script('divi-barrierefrei-addon-js');
+
+        wp_register_style("divi-barrierefrei-css", plugins_url( 'divi-barrierefrei/divi-barrierefrei.css' ));
+        wp_enqueue_style('divi-barrierefrei-css');
+    }
+}
+
 
 // Filter injection //
-
 add_filter("et_pb_module_shortcode_attributes", "update_module_alt_text", 20, 3 );
 add_action("after_setup_theme", "wf_remove_et_viewport_meta");
 add_action("wp_head", "wf_enable_pinch_zoom");
 add_action('wp_enqueue_scripts', 'divi_barrierefrei_script');
+?>

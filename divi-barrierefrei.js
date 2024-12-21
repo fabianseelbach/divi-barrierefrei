@@ -1,24 +1,19 @@
-(function($) { $(document).ready(function() {
-    $(".et_pb_menu__search-button").attr("role","search");
-}); })(jQuery);
+jQuery(function($) {
+    $(document).ready(function() {
 
-(function(document, window){
-    if (!document || !window) {
-    return;
-    }
-    var styleText = '::-moz-focus-inner{border:0 !important;}:focus{outline: none !important;';
-    var unfocus_style = document.createElement('STYLE');
-    window.unfocus = function(){
-    document.getElementsByTagName('HEAD')[0].appendChild(unfocus_style);
-    document.addEventListener('mousedown', function(){
-    unfocus_style.innerHTML = styleText+'}';
+        // Add ID to Search Field
+        $('.et_pb_search').each(function(){
+            $(this).find('input.et_pb_s').each(function(){
+                $(this).attr('id', 's');
+            });
+        });
+        // Add Title to Nav Arrows
+        $("a.et-pb-arrow-prev").each(function(){
+            $(this).attr('aria-label', 'Zurück');
+        });
+
+        $("a.et-pb-arrow-next").each(function(){
+            $(this).attr('aria-label', 'Weiter');
+        });
     });
-    document.addEventListener('keydown', function(){
-    unfocus_style.innerHTML = '';
-    });
-    };
-    unfocus.style = function(style){
-    styleText += style;
-    };
-    unfocus();
-})(document, window);
+}); 
